@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -30,8 +29,9 @@ public class ReadActivity extends AppCompatActivity {
     private static Integer id_note;
     public static final String KEY_ID = "id_key";
 
-    ArrayAdapter<String> adapterSpinner;
-    List<String> list_spinner;
+    private ArrayAdapter<String> adapterSpinner;
+    private List<String> list_spinner;
+    private static int type=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class ReadActivity extends AppCompatActivity {
         list_spinner.add(getResources().getString(R.string.c));
 
         //adapter of spinner
-        adapterSpinner = new ArrayAdapter<String>(this,R.layout.spinner_item_blue,list_spinner  );
+        adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_blue,list_spinner  );
         spinner.setAdapter(adapterSpinner);
         spinner.setEnabled(false);
 
@@ -59,20 +59,20 @@ public class ReadActivity extends AppCompatActivity {
             id_note = extrasBundle.getInt(KEY_ID);
         }
 
-        viewModel = ViewModelProviders.of(this, ViewModelProvider.AndroidViewModelFactory.
-                getInstance(this.getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
+                .getInstance(this.getApplication())).get(MainViewModel.class);
 
         if (id_note != -1) {
-            //if id >= 1 get note form database
+            //if id >= 0 get note form database
             viewModel.getNoteById(id_note).observe(this, new Observer<NoteEntity>() {
                 @Override
                 public void onChanged(NoteEntity noteEntity) {
                     if (noteEntity != null) { //noteEntity isn't null invoked this
                         txt_title.setText(noteEntity.getTitle());
                         txt_body.setText(noteEntity.getBody());
-                        spinner.setSelection(noteEntity.getType());
+                        type = noteEntity.getType();
+                        spinner.setSelection(type);
                         changeBackground(noteEntity.getType());
-
                     }
                 }
             });
@@ -91,6 +91,7 @@ public class ReadActivity extends AppCompatActivity {
         return true;
     }//end onCreateOptionsMenu()
     //handle item select
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -142,22 +143,25 @@ public class ReadActivity extends AppCompatActivity {
             case 0:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_blue));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_blue));
-                adapterSpinner = new ArrayAdapter<String>(this,R.layout.spinner_item_blue,list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_blue, list_spinner);
                 spinner.setAdapter(adapterSpinner);
+                spinner.setSelection(type);
                 spinner.setBackground(getDrawable(R.drawable.edit_text_border_blue));
                 break;
             case 1:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_green));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_green));
-                adapterSpinner = new ArrayAdapter<String>(this,R.layout.spinner_item_green,list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_green,list_spinner);
                 spinner.setAdapter(adapterSpinner);
+                spinner.setSelection(type);
                 spinner.setBackground(getDrawable(R.drawable.edit_text_border_green));
                 break;
             case 2:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_orange));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_orange));
-                adapterSpinner = new ArrayAdapter<String>(this,R.layout.spinner_item_orange,list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_orange,list_spinner);
                 spinner.setAdapter(adapterSpinner);
+                spinner.setSelection(type);
                 spinner.setBackground(getDrawable(R.drawable.edit_text_border_orange));
                 break;
         }//end switch

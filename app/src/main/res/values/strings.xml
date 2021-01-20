@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Notes</string>
+
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
+    <string name="setting">Setting</string>
+    <string name="about">About us</string>
+    <string name="title">Note</string>
+    <string name="hint_title">Your Title</string>
+    <string name="hint_body">Write your Note here</string>
+
+    <string name="a">Normal</string>
+    <string name="b">Important</string>
+    <string name="c">Very Important</string>
+
+</resources>
