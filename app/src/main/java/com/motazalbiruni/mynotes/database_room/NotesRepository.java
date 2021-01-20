@@ -50,98 +50,128 @@ public class NotesRepository {
     }
 
     //insert
-    public void insert(NoteEntity noteEntity){
-        new InsertAsyncTask(mNoteDAO).execute(noteEntity);
+    public void insert(final NoteEntity noteEntity){
+        MyExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mNoteDAO.insert(noteEntity);
+            }
+        });
+//        new InsertAsyncTask(mNoteDAO).execute(noteEntity);
     }
     //update
-    public void update(NoteEntity noteEntity){
-        new UpdateAsyncTask(mNoteDAO).execute(noteEntity);
+    public void update(final NoteEntity noteEntity){
+        MyExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mNoteDAO.update(noteEntity);
+            }
+        });
+//        new UpdateAsyncTask(mNoteDAO).execute(noteEntity);
     }
 
     //delete
-    public void delete(NoteEntity noteEntity){
-        new DeleteAsyncTask(mNoteDAO).execute(noteEntity);
+    public void delete(final NoteEntity noteEntity){
+        MyExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mNoteDAO.delete(noteEntity);
+            }
+        });
+//        new DeleteAsyncTask(mNoteDAO).execute(noteEntity);
     }
 
     //deleteAll
     public void deleteAll(){
-        new DeleteAllAsyncTask(mNoteDAO).execute();
+        MyExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mNoteDAO.deleteAll();
+            }
+        });
+//        new DeleteAllAsyncTask(mNoteDAO).execute();
     }
 
     //deleteById
-    public void deleteById(int id){
-        new DeleteByIDAsyncTask(mNoteDAO).execute(id);
+    public void deleteById(final int id){
+        MyExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mNoteDAO.deleteById(id);
+            }
+        });
+//        new DeleteByIDAsyncTask(mNoteDAO).execute(id);
     }
 
-
-    private class InsertAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-        private NoteDAO dao;
-
-        protected InsertAsyncTask(NoteDAO dao) {
-            this.dao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
-            dao.insert(noteEntities[0]);
-            return null;
-        }
-    }
-
-    private class UpdateAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-        private NoteDAO dao;
-
-        public UpdateAsyncTask(NoteDAO dao) {
-            this.dao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
-            dao.update(noteEntities[0]);
-            return null;
-        }
-    }
-
-    private class DeleteAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-        private NoteDAO dao;
-
-        public DeleteAsyncTask(NoteDAO dao) {
-            this.dao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
-            dao.delete(noteEntities[0]);
-            return null;
-        }
-    }
-
-    private class DeleteAllAsyncTask extends AsyncTask<Void ,Void,Void> {
-        private NoteDAO dao;
-
-        public DeleteAllAsyncTask(NoteDAO dao) {
-            this.dao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            dao.deleteAll();
-            return null;
-        }
-    }
-
-    private class DeleteByIDAsyncTask extends AsyncTask<Integer ,Void,Void> {
-        private NoteDAO dao;
-
-        public DeleteByIDAsyncTask(NoteDAO dao) {
-            this.dao = dao;
-        }
-
-        @Override
-        protected Void doInBackground(Integer... integers) {
-            dao.deleteById(integers[0]);
-            return null;
-        }
-    }
+//
+//    private class InsertAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
+//        private NoteDAO dao;
+//
+//        protected InsertAsyncTask(NoteDAO dao) {
+//            this.dao = dao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(NoteEntity... noteEntities) {
+//            dao.insert(noteEntities[0]);
+//            return null;
+//        }
+//    }
+//
+//    private class UpdateAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
+//        private NoteDAO dao;
+//
+//        public UpdateAsyncTask(NoteDAO dao) {
+//            this.dao = dao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(NoteEntity... noteEntities) {
+//            dao.update(noteEntities[0]);
+//            return null;
+//        }
+//    }
+//
+//    private class DeleteAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
+//        private NoteDAO dao;
+//
+//        public DeleteAsyncTask(NoteDAO dao) {
+//            this.dao = dao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(NoteEntity... noteEntities) {
+//            dao.delete(noteEntities[0]);
+//            return null;
+//        }
+//    }
+//
+//    private class DeleteAllAsyncTask extends AsyncTask<Void ,Void,Void> {
+//        private NoteDAO dao;
+//
+//        public DeleteAllAsyncTask(NoteDAO dao) {
+//            this.dao = dao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            dao.deleteAll();
+//            return null;
+//        }
+//    }
+//
+//    private class DeleteByIDAsyncTask extends AsyncTask<Integer ,Void,Void> {
+//        private NoteDAO dao;
+//
+//        public DeleteByIDAsyncTask(NoteDAO dao) {
+//            this.dao = dao;
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Integer... integers) {
+//            dao.deleteById(integers[0]);
+//            return null;
+//        }
+//    }
 
 }

@@ -33,4 +33,4 @@ public interface NoteDAO {
     @Query("delete from notes_table where id= :id")
     void deleteById(int id);
 
-}
+}//end Dao

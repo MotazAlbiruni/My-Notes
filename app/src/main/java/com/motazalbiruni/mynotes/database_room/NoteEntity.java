@@ -9,9 +9,9 @@ public class NoteEntity {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String title;
-    private String body;
-    private int type;
+    private final String title;
+    private final String body;
+    private final int type;
 
     //constructor
     public NoteEntity(String title, String body,int type) {

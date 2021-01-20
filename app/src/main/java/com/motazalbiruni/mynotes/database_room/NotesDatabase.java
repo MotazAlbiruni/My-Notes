@@ -36,4 +36,4 @@ public abstract class NotesDatabase extends RoomDatabase {
             super.onOpen(db);
         }
     };
-}
+}//end NotesDatabase class

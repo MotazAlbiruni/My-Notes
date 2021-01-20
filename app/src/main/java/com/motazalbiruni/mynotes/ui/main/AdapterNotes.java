@@ -82,4 +82,5 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
             txtTitle = itemView.findViewById(R.id.txtTitleList);
         }
     }//end Class MyHolder
-}//end Class
+
+}//end AdapterNotes Class

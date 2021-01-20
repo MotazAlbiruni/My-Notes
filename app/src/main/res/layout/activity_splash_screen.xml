@@ -14,5 +14,4 @@
         android:scaleType="fitXY"
         android:src="@drawable/my_notes_splash"
          />
-
 </RelativeLayout>

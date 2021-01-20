@@ -166,4 +166,4 @@ public class ReadActivity extends AppCompatActivity {
                 break;
         }//end switch
     }//end changeBackground
-}//end Class
+}//end Class ReadActivity
