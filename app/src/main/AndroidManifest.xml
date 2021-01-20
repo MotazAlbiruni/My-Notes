@@ -9,28 +9,18 @@
         android:roundIcon="@mipmap/ic_my_notes_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.SplashScreen"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashScreen">
+        <activity android:name=".ReadActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.ReadActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.main.MainActivity" />
-        </activity>
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:screenOrientation="portrait">
-
         </activity>
     </application>
 

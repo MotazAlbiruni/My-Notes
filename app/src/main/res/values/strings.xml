@@ -15,4 +15,9 @@
     <string name="b">Important</string>
     <string name="c">Very Important</string>
 
+    <string name="blue">#3ABBCC</string>
+    <string name="green">#4CAF50</string>
+    <string name="orange">#DA6C49</string>
+
+
 </resources>

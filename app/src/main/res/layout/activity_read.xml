@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_background"
     android:orientation="vertical"
     android:weightSum="4"
-    tools:context=".ui.ReadActivity">
+    tools:context=".ReadActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -14,34 +13,32 @@
         android:layout_height="0dp"
         android:layout_weight=".5"
         android:orientation="horizontal"
-        android:weightSum="8">
+        android:weightSum="4">
 
         <EditText
             android:id="@+id/txtTitle_Read"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:layout_weight="5"
-            android:background="@drawable/edit_text_border_blue"
+            android:layout_weight="2.5"
+            android:background="@drawable/edit_text_border"
             android:enabled="false"
             android:gravity="center_vertical"
             android:hint="@string/hint_title"
             android:imeOptions="actionNext"
             android:padding="16dp"
             android:singleLine="true"
-            android:textColor="@color/colorTextWhite"
+            android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            tools:ignore="Autofill,NestedWeights"
-            android:inputType="text" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner_important"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:background="@drawable/edit_text_border_blue"
+            android:layout_weight="1.5"
+            android:background="@drawable/edit_text_border"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
@@ -62,17 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:background="@drawable/edit_text_border_blue"
+            android:background="@drawable/edit_text_border"
             android:enabled="false"
             android:gravity="start|top"
             android:hint="@string/hint_body"
             android:imeOptions="actionDone"
             android:inputType="textMultiLine"
             android:padding="16dp"
-            android:textColor="@color/colorTextWhite"
+            android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
-            android:textSize="24sp"
-            tools:ignore="Autofill" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
