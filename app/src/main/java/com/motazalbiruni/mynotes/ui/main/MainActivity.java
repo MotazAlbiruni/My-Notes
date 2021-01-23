@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.motazalbiruni.mynotes.database_room.NoteEntity;
 import com.motazalbiruni.mynotes.R;
+import com.motazalbiruni.mynotes.ui.MoreSetting;
 import com.motazalbiruni.mynotes.ui.ReadActivity;
 
 import java.util.List;
@@ -31,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,
+                LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(staggeredGridLayoutManager);
         final AdapterNotes adapterNotes = new AdapterNotes(this);
         recyclerView.setAdapter(adapterNotes);
 
@@ -41,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllNotes().observe(this, new Observer<List<NoteEntity>>() {
             @Override
             public void onChanged(List<NoteEntity> noteEntities) {
-                Toast.makeText(getApplicationContext(), "title is : " +
-                        noteEntities.get(0).getTitle() + "{ " +
-                        noteEntities.get(0).getId() + " }", Toast.LENGTH_SHORT).show();
                 adapterNotes.setList(noteEntities);
             }
         });
@@ -62,15 +63,21 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.add_item:
                 Toast.makeText(this, getResources().getString(R.string.add), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, ReadActivity.class);
-                intent.putExtra(KEY_ID, -1);
-                startActivity(intent);
+                Intent intentAdd = new Intent(this, ReadActivity.class);
+                intentAdd.putExtra(KEY_ID, -1);
+                startActivity(intentAdd);
                 return true;
             case R.id.setting:
                 Toast.makeText(this, getResources().getString(R.string.setting), Toast.LENGTH_SHORT).show();
+                Intent intentSetting = new Intent(this, MoreSetting.class);
+                intentSetting.putExtra("moreSetting",0);
+                startActivity(intentSetting);
                 return true;
             case R.id.about:
                 Toast.makeText(this, getResources().getString(R.string.about), Toast.LENGTH_SHORT).show();
+                Intent intentAbout = new Intent(this, MoreSetting.class);
+                intentAbout.putExtra("moreSetting",1);
+                startActivity(intentAbout);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

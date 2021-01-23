@@ -1,10 +1,7 @@
 package com.motazalbiruni.mynotes.database_room;
 
 import android.app.Application;
-import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
-
 import java.util.List;
 
 public class NotesRepository {
@@ -57,7 +54,6 @@ public class NotesRepository {
                 mNoteDAO.insert(noteEntity);
             }
         });
-//        new InsertAsyncTask(mNoteDAO).execute(noteEntity);
     }
     //update
     public void update(final NoteEntity noteEntity){
@@ -67,7 +63,6 @@ public class NotesRepository {
                 mNoteDAO.update(noteEntity);
             }
         });
-//        new UpdateAsyncTask(mNoteDAO).execute(noteEntity);
     }
 
     //delete
@@ -78,7 +73,6 @@ public class NotesRepository {
                 mNoteDAO.delete(noteEntity);
             }
         });
-//        new DeleteAsyncTask(mNoteDAO).execute(noteEntity);
     }
 
     //deleteAll
@@ -89,7 +83,6 @@ public class NotesRepository {
                 mNoteDAO.deleteAll();
             }
         });
-//        new DeleteAllAsyncTask(mNoteDAO).execute();
     }
 
     //deleteById
@@ -100,78 +93,6 @@ public class NotesRepository {
                 mNoteDAO.deleteById(id);
             }
         });
-//        new DeleteByIDAsyncTask(mNoteDAO).execute(id);
     }
 
-//
-//    private class InsertAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-//        private NoteDAO dao;
-//
-//        protected InsertAsyncTask(NoteDAO dao) {
-//            this.dao = dao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(NoteEntity... noteEntities) {
-//            dao.insert(noteEntities[0]);
-//            return null;
-//        }
-//    }
-//
-//    private class UpdateAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-//        private NoteDAO dao;
-//
-//        public UpdateAsyncTask(NoteDAO dao) {
-//            this.dao = dao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(NoteEntity... noteEntities) {
-//            dao.update(noteEntities[0]);
-//            return null;
-//        }
-//    }
-//
-//    private class DeleteAsyncTask extends AsyncTask<NoteEntity ,Void,Void> {
-//        private NoteDAO dao;
-//
-//        public DeleteAsyncTask(NoteDAO dao) {
-//            this.dao = dao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(NoteEntity... noteEntities) {
-//            dao.delete(noteEntities[0]);
-//            return null;
-//        }
-//    }
-//
-//    private class DeleteAllAsyncTask extends AsyncTask<Void ,Void,Void> {
-//        private NoteDAO dao;
-//
-//        public DeleteAllAsyncTask(NoteDAO dao) {
-//            this.dao = dao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            dao.deleteAll();
-//            return null;
-//        }
-//    }
-//
-//    private class DeleteByIDAsyncTask extends AsyncTask<Integer ,Void,Void> {
-//        private NoteDAO dao;
-//
-//        public DeleteByIDAsyncTask(NoteDAO dao) {
-//            this.dao = dao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Integer... integers) {
-//            dao.deleteById(integers[0]);
-//            return null;
-//        }
-//    }
-
-}
+}//end mNotesRepository class

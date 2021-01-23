@@ -14,5 +14,16 @@
     <string name="a">Normal</string>
     <string name="b">Important</string>
     <string name="c">Very Important</string>
-    
+
+    <string-array name="typeNotes">
+        <item>Normal</item>
+        <item>Important</item>
+        <item>Very Important</item>
+    </string-array>
+    <string-array name="language">
+        <item>arabic</item>
+        <item>english</item>
+        <item>german</item>
+    </string-array>
+
 </resources>

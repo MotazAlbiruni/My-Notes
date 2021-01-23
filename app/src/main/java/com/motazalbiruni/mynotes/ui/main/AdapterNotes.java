@@ -1,5 +1,6 @@
 package com.motazalbiruni.mynotes.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.motazalbiruni.mynotes.R;
@@ -46,24 +48,31 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
     public void onBindViewHolder(@NonNull final MyHolder holder, final int position) {
         // holder.textView.setText(MyHolders.get(position).getTitle());
         holder.txtTitle.setText(list.get(position).getTitle());
+        holder.txtBody.setText(list.get(position).getBody());
         int importantType = list.get(position).getType();
-        switch (importantType){
+        switch (importantType) {
             case 0:
                 holder.txtTitle.setBackgroundResource(R.color.blue);
+                holder.txtBody.setTextColor(ContextCompat.getColor(context, R.color.blue));
+                holder.txtDate.setBackgroundResource(R.color.blue);
                 break;
             case 1:
                 holder.txtTitle.setBackgroundResource(R.color.green);
+                holder.txtBody.setTextColor(ContextCompat.getColor(context, R.color.green));
+                holder.txtDate.setBackgroundResource(R.color.green);
                 break;
             case 2:
                 holder.txtTitle.setBackgroundResource(R.color.orange);
+                holder.txtBody.setTextColor(ContextCompat.getColor(context, R.color.orange));
+                holder.txtDate.setBackgroundResource(R.color.orange);
                 break;
         }
 
-        holder.txtTitle.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ReadActivity.class);
-                intent.putExtra(KEY_ID,list.get(position).getId());
+                intent.putExtra(KEY_ID, list.get(position).getId());
                 context.startActivity(intent);
             }
         });
@@ -75,11 +84,13 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
     }//end getItemCount()
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        private final TextView txtTitle;
+        private final TextView txtTitle, txtDate, txtBody;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             txtTitle = itemView.findViewById(R.id.txtTitleList);
+            txtDate = itemView.findViewById(R.id.txtDateList);
+            txtBody = itemView.findViewById(R.id.txtBodyList);
         }
     }//end Class MyHolder
 

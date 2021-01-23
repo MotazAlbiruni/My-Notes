@@ -11,7 +11,7 @@ import com.motazalbiruni.mynotes.ui.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_TIME = 3000;
+    private final int SPLASH_DISPLAY_TIME = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

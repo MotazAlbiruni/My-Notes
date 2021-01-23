@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.MoreSetting"
+            android:parentActivityName=".ui.main.MainActivity" />
+        <activity
             android:name=".ui.SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreen">
@@ -29,9 +32,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

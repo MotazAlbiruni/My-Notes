@@ -19,7 +19,10 @@ import com.motazalbiruni.mynotes.R;
 import com.motazalbiruni.mynotes.ui.main.MainViewModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class ReadActivity extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle( R.string.title);
+        Objects.requireNonNull(getSupportActionBar()).setTitle( R.string.title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_read);
 
@@ -45,12 +48,10 @@ public class ReadActivity extends AppCompatActivity {
         spinner = findViewById(R.id.spinner_important);//choose the type of important to note
 
         list_spinner = new ArrayList<>();
-        list_spinner.add(getResources().getString(R.string.a));
-        list_spinner.add(getResources().getString(R.string.b));
-        list_spinner.add(getResources().getString(R.string.c));
+        list_spinner = Arrays.asList(getResources().getStringArray(R.array.typeNotes));
 
         //adapter of spinner
-        adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_blue,list_spinner  );
+        adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_blue,list_spinner);
         spinner.setAdapter(adapterSpinner);
         spinner.setEnabled(false);
 
