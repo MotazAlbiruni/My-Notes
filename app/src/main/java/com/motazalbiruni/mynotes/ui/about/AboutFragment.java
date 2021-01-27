@@ -28,9 +28,9 @@ public class AboutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.about_fragment, container, false);
-        TextView txt = view.findViewById(R.id.txt_about);
+        TextView txt = view.findViewById(R.id.txt_about_version);
         String versionName = BuildConfig.VERSION_NAME;
-        txt.setText("Version Name: "+versionName);
+        txt.setText("Version : "+versionName);
         return view;
     }
 
