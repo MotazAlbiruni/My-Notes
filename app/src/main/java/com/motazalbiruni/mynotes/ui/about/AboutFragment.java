@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.motazalbiruni.mynotes.BuildConfig;
 import com.motazalbiruni.mynotes.R;
 
 public class AboutFragment extends Fragment {
@@ -26,6 +28,9 @@ public class AboutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.about_fragment, container, false);
+        TextView txt = view.findViewById(R.id.txt_about);
+        String versionName = BuildConfig.VERSION_NAME;
+        txt.setText("Version Name: "+versionName);
         return view;
     }
 
@@ -33,6 +38,7 @@ public class AboutFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(AboutViewModel.class);
+
         // TODO: Use the ViewModel
     }
 

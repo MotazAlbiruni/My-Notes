@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,15 +33,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences pref = getSharedPreferences("motazalbiruni.mynotes", MODE_PRIVATE);
+        //get show notes from file setting
+        String showNotes = pref.getString("display", "welcome");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,
-                LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
+        switch (showNotes) {
+            case "grid":
+                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,
+                        LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(staggeredGridLayoutManager);
+                break;
+            case "list":
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                break;
+        }
         final AdapterNotes adapterNotes = new AdapterNotes(this);
         recyclerView.setAdapter(adapterNotes);
-
-        MainViewModel viewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
+        MainViewModel viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                 .getInstance(this.getApplication())).get(MainViewModel.class);
 
         viewModel.getAllNotes().observe(this, new Observer<List<NoteEntity>>() {
@@ -48,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 adapterNotes.setList(noteEntities);
             }
         });
-    }
+
+    }//end onCreate()
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,24 +76,24 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.add_item:
                 Toast.makeText(this, getResources().getString(R.string.add), Toast.LENGTH_SHORT).show();
-                Intent intentAdd = new Intent(this, ReadActivity.class);
-                intentAdd.putExtra(KEY_ID, -1);
-                startActivity(intentAdd);
+                moveToaActivity(-1, this, ReadActivity.class);
                 return true;
             case R.id.setting:
                 Toast.makeText(this, getResources().getString(R.string.setting), Toast.LENGTH_SHORT).show();
-                Intent intentSetting = new Intent(this, MoreSetting.class);
-                intentSetting.putExtra("moreSetting",0);
-                startActivity(intentSetting);
+                moveToaActivity(0, this, MoreSetting.class);
                 return true;
             case R.id.about:
                 Toast.makeText(this, getResources().getString(R.string.about), Toast.LENGTH_SHORT).show();
-                Intent intentAbout = new Intent(this, MoreSetting.class);
-                intentAbout.putExtra("moreSetting",1);
-                startActivity(intentAbout);
+                moveToaActivity(1, this, MoreSetting.class);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+        }//end switch
+    }//end onOptionsItemSelected()
+
+    public void moveToaActivity(int value, Context context, Class aClass) {
+        Intent intentAbout = new Intent(context, aClass);
+        intentAbout.putExtra("id_key", value);
+        startActivity(intentAbout);
     }
 }//end MainActivity Class

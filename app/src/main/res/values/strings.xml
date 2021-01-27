@@ -20,10 +20,23 @@
         <item>Important</item>
         <item>Very Important</item>
     </string-array>
+
     <string-array name="language">
+        <item>Default</item>
         <item>arabic</item>
         <item>english</item>
         <item>german</item>
+    </string-array>
+
+    <string-array name="displayNotes">
+        <item>Grid</item>
+        <item>List</item>
+    </string-array>
+
+    <string-array name="textSize">
+        <item>Small</item>
+        <item>medium</item>
+        <item>Large</item>
     </string-array>
 
 </resources>

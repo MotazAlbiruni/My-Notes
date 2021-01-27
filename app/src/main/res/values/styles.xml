@@ -11,4 +11,8 @@
         <item name="android:background">@drawable/my_notes_splash</item>
     </style>
 
+    <style name="spinnerStyle"  parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
 </resources>

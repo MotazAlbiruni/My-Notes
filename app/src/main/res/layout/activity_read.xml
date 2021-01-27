@@ -38,14 +38,11 @@
 
         <Spinner
             android:id="@+id/spinner_important"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
-            android:background="@drawable/edit_text_border_blue"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            />
+            android:background="@color/gray_background" />
 
     </LinearLayout>
 

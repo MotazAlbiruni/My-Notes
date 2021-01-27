@@ -20,7 +20,7 @@ public class MoreSetting extends AppCompatActivity {
 
         Bundle extrasBundle = getIntent().getExtras(); //to get id for note click
         if (extrasBundle != null) {
-            keyMore = extrasBundle.getInt("moreSetting");
+            keyMore = extrasBundle.getInt("id_key");
         }
 
         if (savedInstanceState == null) {

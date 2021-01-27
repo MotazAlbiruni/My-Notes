@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,15 +44,35 @@ public class ReadActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_read);
 
+        SharedPreferences pref = getSharedPreferences("motazalbiruni.mynotes", MODE_PRIVATE);
+
         txt_title = findViewById(R.id.txtTitle_Read); //text for title note
         txt_body = findViewById(R.id.txtNote_Read); //text for body note
         spinner = findViewById(R.id.spinner_important);//choose the type of important to note
+        //setting text size in reading
+        String textSize = pref.getString("textSize", "welcome");
+        switch (textSize){
+            case "small":
+                txt_title.setTextSize(16);
+                txt_body.setTextSize(16);
+                break;
+            case "medium":
+                txt_title.setTextSize(20);
+                txt_body.setTextSize(20);
+                break;
+            case "large":
+                txt_title.setTextSize(24);
+                txt_body.setTextSize(24);
+                break;
+        }//end switch
 
         list_spinner = new ArrayList<>();
         list_spinner = Arrays.asList(getResources().getStringArray(R.array.typeNotes));
 
         //adapter of spinner
-        adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_blue,list_spinner);
+//        adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_blue,list_spinner);
+        adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_blue
+                , R.id.text_spinner_item_blue, list_spinner);
         spinner.setAdapter(adapterSpinner);
         spinner.setEnabled(false);
 
@@ -144,26 +165,29 @@ public class ReadActivity extends AppCompatActivity {
             case 0:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_blue));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_blue));
-                adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_blue, list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_blue
+                        , R.id.text_spinner_item_blue, list_spinner);
                 spinner.setAdapter(adapterSpinner);
                 spinner.setSelection(type);
-                spinner.setBackground(getDrawable(R.drawable.edit_text_border_blue));
+//                spinner.setBackground(getDrawable(R.drawable.edit_text_border_blue));
                 break;
             case 1:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_green));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_green));
-                adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_green,list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_green
+                        , R.id.text_spinner_item_green, list_spinner);
                 spinner.setAdapter(adapterSpinner);
                 spinner.setSelection(type);
-                spinner.setBackground(getDrawable(R.drawable.edit_text_border_green));
+//                spinner.setBackground(getDrawable(R.drawable.edit_text_border_green));
                 break;
             case 2:
                 txt_body.setBackground(getDrawable(R.drawable.edit_text_border_orange));
                 txt_title.setBackground(getDrawable(R.drawable.edit_text_border_orange));
-                adapterSpinner = new ArrayAdapter<>(this,R.layout.spinner_item_orange,list_spinner);
+                adapterSpinner = new ArrayAdapter<>(this, R.layout.spinner_item_orange
+                        , R.id.text_spinner_item_orange, list_spinner);
                 spinner.setAdapter(adapterSpinner);
                 spinner.setSelection(type);
-                spinner.setBackground(getDrawable(R.drawable.edit_text_border_orange));
+//                spinner.setBackground(getDrawable(R.drawable.edit_text_border_orange));
                 break;
         }//end switch
     }//end changeBackground

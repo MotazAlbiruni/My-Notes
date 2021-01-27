@@ -18,24 +18,29 @@
         <TextView
             android:id="@+id/txt_language"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:gravity="left|center"
             android:text="Language"
-            android:textSize="18sp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_language"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center" />
     </LinearLayout>
 
     <View
         android:id="@+id/divider1"
         android:layout_width="match_parent"
         android:layout_height="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="?android:attr/listDivider" />
 
     <LinearLayout
@@ -51,21 +56,26 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:gravity="left|center"
             android:text="Display Notes"
-            android:textSize="18sp"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_displayNotes"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="left|center"/>
     </LinearLayout>
 
     <View
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="?android:attr/listDivider" />
 
     <LinearLayout
@@ -81,21 +91,26 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:gravity="left|center"
             android:text="Text Size"
-            android:textSize="18sp"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_textSize"
+            style="@style/spinnerStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="left|center"/>
     </LinearLayout>
 
     <View
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="4dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="?android:attr/listDivider" />
 
 
