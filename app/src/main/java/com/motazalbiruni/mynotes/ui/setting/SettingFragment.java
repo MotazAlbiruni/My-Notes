@@ -87,17 +87,17 @@ public class SettingFragment extends Fragment {
                     case 1:
                         editor.putString("language", "arabic");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Language is Arabic", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Language is Arabic", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         editor.putString("language", "english");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Language is English", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Language is English", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         editor.putString("language", "german");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Language is german", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Language is german", Toast.LENGTH_SHORT).show();
                         break;
                 }//end switch
             }
@@ -134,12 +134,12 @@ public class SettingFragment extends Fragment {
                     case 0:
                         editor.putString("display", "grid");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is Grid", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is Grid", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         editor.putString("display", "list");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is List", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is List", Toast.LENGTH_SHORT).show();
                         break;
                 }//end switch
             }
@@ -178,17 +178,17 @@ public class SettingFragment extends Fragment {
                     case 0:
                         editor.putString("textSize", "small");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Small", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Small", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         editor.putString("textSize", "medium");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Medium", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Medium", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         editor.putString("textSize", "large");
                         editor.apply();
-                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Large", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Large", Toast.LENGTH_SHORT).show();
                         break;
                 }//end switch
             }
@@ -200,6 +200,7 @@ public class SettingFragment extends Fragment {
         });
     }//end onViewCreated()
 
+    //for change language
     public void changeLanguage(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();

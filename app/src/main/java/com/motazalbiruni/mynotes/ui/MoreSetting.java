@@ -39,8 +39,7 @@ public class MoreSetting extends AppCompatActivity {
                             .replace(R.id.container, AboutFragment.newInstance())
                             .commitNow();
                     break;
-            }
-
-        }
-    }
-}
+            }//end switch
+        }//end if
+    }//end onCreate()
+}//end class

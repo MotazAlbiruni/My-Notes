@@ -10,10 +10,7 @@
     <string name="title">Note</string>
     <string name="hint_title">Your Title</string>
     <string name="hint_body">Write your Note here</string>
-
-    <string name="a">Normal</string>
-    <string name="b">Important</string>
-    <string name="c">Very Important</string>
+    <string name="to_do">short cut</string>
 
     <string-array name="typeNotes">
         <item>Normal</item>

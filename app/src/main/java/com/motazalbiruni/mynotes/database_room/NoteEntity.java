@@ -12,21 +12,24 @@ public class NoteEntity {
     private final String title;
     private final String body;
     private final int type;
+    private final String date;
 
     //constructor
-    public NoteEntity(String title, String body,int type) {
+    public NoteEntity(String title, String body,int type, String date) {
         this.title = title;
         this.body = body;
         this.type = type;
+        this.date = date;
     }
 
     //ignore
     @Ignore
-    public NoteEntity(int id, String title, String body,int type) {
+    public NoteEntity(int id, String title, String body,int type, String date) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.type = type;
+        this.date = date;
     }
 
     public int getId() {
@@ -48,4 +51,9 @@ public class NoteEntity {
     public int getType() {
         return type;
     }
-}
+
+    public String getDate() {
+        return date;
+    }
+
+}//end class

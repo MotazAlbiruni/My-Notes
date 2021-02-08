@@ -8,23 +8,26 @@ import androidx.lifecycle.ViewModelProvider;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.motazalbiruni.mynotes.database_room.NoteEntity;
 import com.motazalbiruni.mynotes.R;
 import com.motazalbiruni.mynotes.ui.main.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,27 +36,34 @@ public class ReadActivity extends AppCompatActivity {
     private MainViewModel viewModel;
     private EditText txt_title, txt_body;
     private Spinner spinner;
-    LinearLayout linearLayout;
     private static Integer id_note;
     public static final String KEY_ID = "id_key";
 
     private ArrayAdapter<String> adapterSpinner;
     private List<String> list_spinner;
     private static int type=0;
-    int x = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle( R.string.title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_read);
+        //ADMob
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        AdView mAdView = findViewById(R.id.adView_mainActivity);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         SharedPreferences pref = getSharedPreferences("motazalbiruni.mynotes", MODE_PRIVATE);
 
         txt_title = findViewById(R.id.txtTitle_Read); //text for title note
         txt_body = findViewById(R.id.txtNote_Read); //text for body note
         spinner = findViewById(R.id.spinner_important);//choose the type of important to note
-        linearLayout = findViewById(R.id.linearLayout_body);
         //setting text size in reading
         String textSize = pref.getString("textSize", "welcome");
         switch (textSize){
@@ -124,7 +134,7 @@ public class ReadActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.edit_item:
-                Toast.makeText(this, getResources().getString(R.string.edit), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, getResources().getString(R.string.edit), Toast.LENGTH_SHORT).show();
                 editData();
                 return true;
             case R.id.save_item:
@@ -140,13 +150,17 @@ public class ReadActivity extends AppCompatActivity {
 
 
     private void saveData(){
-        Toast.makeText(this, getResources().getString(R.string.save), Toast.LENGTH_SHORT).show();
+        Date date = new Date();
+        String timeNow = (String) DateFormat.format("d-MMMM-yyyy",date.getTime());
+//        Toast.makeText(this, getResources().getString(R.string.save), Toast.LENGTH_SHORT).show();
         String txt_title_editing = txt_title.getText().toString();
         String txt_body_editing = txt_body.getText().toString();
         if (id_note != -1) {
-            viewModel.update(new NoteEntity(id_note, txt_title_editing, txt_body_editing,spinner.getSelectedItemPosition()));
+            if (txt_body.isEnabled())
+            viewModel.update(new NoteEntity(id_note, txt_title_editing, txt_body_editing,spinner.getSelectedItemPosition(),timeNow));
         } else {
-            viewModel.insert(new NoteEntity(txt_title_editing, txt_body_editing,spinner.getSelectedItemPosition()));
+            if (!txt_title_editing.equals(""))
+            viewModel.insert(new NoteEntity(txt_title_editing, txt_body_editing,spinner.getSelectedItemPosition(),timeNow));
         }
         finish();
     }
@@ -155,15 +169,21 @@ public class ReadActivity extends AppCompatActivity {
         txt_title.setEnabled(true);
         txt_body.setEnabled(true);
         spinner.setEnabled(true);
-    }
+    }//end editData()
 
     private void deleteFromData(){
         if (id_note != -1) {
             viewModel.deleteById(id_note);
             finish();
         }
-        Toast.makeText(this,  getResources().getString(R.string.delete), Toast.LENGTH_SHORT).show();
-    }
+//        Toast.makeText(this,  getResources().getString(R.string.delete), Toast.LENGTH_SHORT).show();
+    }//end deleteFromData()
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveData();
+    }//end onPause()
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void changeBackground(int type){

@@ -1,8 +1,8 @@
 package com.motazalbiruni.mynotes.ui.main;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +23,15 @@ import static com.motazalbiruni.mynotes.ui.ReadActivity.KEY_ID;
 
 public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
 
+    private SharedPreferences sharedPreferences;
     private List<NoteEntity> list = new ArrayList<>();
     private final Context context;
+    private static String textSize;
 
     public AdapterNotes(Context context) {
         this.context = context;
+        sharedPreferences = context.getSharedPreferences("motazalbiruni.mynotes", context.MODE_PRIVATE);
+        textSize = sharedPreferences.getString("textSize", "small");
     }
 
     public void setList(List<NoteEntity> list) {
@@ -49,6 +53,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
         // holder.textView.setText(MyHolders.get(position).getTitle());
         holder.txtTitle.setText(list.get(position).getTitle());
         holder.txtBody.setText(list.get(position).getBody());
+        holder.txtDate.setText(list.get(position).getDate());
         int importantType = list.get(position).getType();
         switch (importantType) {
             case 0:
@@ -67,6 +72,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
                 holder.txtDate.setBackgroundResource(R.color.orange);
                 break;
         }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +97,22 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
             txtTitle = itemView.findViewById(R.id.txtTitleList);
             txtDate = itemView.findViewById(R.id.txtDateList);
             txtBody = itemView.findViewById(R.id.txtBodyList);
-        }
+
+            switch (textSize){
+                case "small":
+                    txtTitle.setTextSize(18);
+                    txtBody.setTextSize(18);
+                    break;
+                case "medium":
+                    txtTitle.setTextSize(20);
+                    txtBody.setTextSize(20);
+                    break;
+                case "large":
+                    txtTitle.setTextSize(22);
+                    txtBody.setTextSize(22);
+                    break;
+            }//end switch
+        }//end MyHolder()
     }//end Class MyHolder
 
 }//end AdapterNotes Class

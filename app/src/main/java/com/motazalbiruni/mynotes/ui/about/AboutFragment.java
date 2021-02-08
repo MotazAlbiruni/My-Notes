@@ -30,7 +30,7 @@ public class AboutFragment extends Fragment {
         View view =  inflater.inflate(R.layout.about_fragment, container, false);
         TextView txt = view.findViewById(R.id.txt_about_version);
         String versionName = BuildConfig.VERSION_NAME;
-        txt.setText("Version : "+versionName);
+        txt.setText(String.format("Version : %s", versionName));
         return view;
     }
 

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.motazalbiruni.mynotes">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_my_notes"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_my_notes_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
         <activity
             android:name=".ui.MoreSetting"
             android:parentActivityName=".ui.main.MainActivity" />
@@ -33,6 +37,11 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9560026096293120~3527572466" />
+
     </application>
 
 </manifest>

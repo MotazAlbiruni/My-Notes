@@ -40,7 +40,7 @@
             android:layout_below="@id/txtBodyList"
             android:layout_marginTop="2dp"
             android:paddingStart="16dp"
-            android:text="25/3/2021"
+            android:text="25-mar-2021"
             android:textColor="@color/colorTextWhite"
             android:textSize="12sp" />
 
