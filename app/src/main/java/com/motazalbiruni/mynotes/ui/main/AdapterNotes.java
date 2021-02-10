@@ -6,9 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
@@ -31,7 +29,6 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
     private List<NoteEntity> list = new ArrayList<>();
     private final Context context;
     private static String textSize;
-    private int lastPosition = -1;
 
     public AdapterNotes(Context context) {
         this.context = context;
