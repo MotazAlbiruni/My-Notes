@@ -6,6 +6,7 @@
 
     <TextView
         android:id="@+id/text_spinner_item_green"
+        style="@style/textColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
@@ -15,6 +16,5 @@
         android:background="@drawable/edit_text_border_green"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/colorTextWhite"
         android:textSize="18sp" />
 </LinearLayout>

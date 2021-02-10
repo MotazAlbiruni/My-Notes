@@ -3,6 +3,7 @@ package com.motazalbiruni.mynotes.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.motazalbiruni.mynotes.R;
 import com.motazalbiruni.mynotes.ui.about.AboutFragment;
@@ -16,6 +17,7 @@ public class MoreSetting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(R.layout.more_setting_activity);
 
         Bundle extrasBundle = getIntent().getExtras(); //to get id for note click

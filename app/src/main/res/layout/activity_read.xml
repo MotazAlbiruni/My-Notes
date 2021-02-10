@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_background"
+        android:background="@color/colorPrimaryLight"
         android:orientation="vertical"
         android:weightSum="4">
 
@@ -22,6 +22,7 @@
 
             <EditText
                 android:id="@+id/txtTitle_Read"
+                style="@style/textColor"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -34,8 +35,6 @@
                 android:inputType="text"
                 android:padding="16dp"
                 android:singleLine="true"
-                android:textColor="@color/colorTextWhite"
-                android:textColorHint="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="Autofill,NestedWeights" />
@@ -46,7 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:background="@color/gray_background" />
+                android:background="@color/colorPrimaryLight" />
 
         </LinearLayout>
 
@@ -60,6 +59,7 @@
 
             <EditText
                 android:id="@+id/txtNote_Read"
+                style="@style/textColor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -70,8 +70,6 @@
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:padding="16dp"
-                android:textColor="@color/colorTextWhite"
-                android:textColorHint="@android:color/white"
                 android:textSize="24sp"
                 tools:ignore="Autofill" />
         </LinearLayout>
@@ -81,9 +79,10 @@
         android:id="@+id/adView_mainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-9560026096293120/6944073292">
+
     </com.google.android.gms.ads.AdView>
 </RelativeLayout>

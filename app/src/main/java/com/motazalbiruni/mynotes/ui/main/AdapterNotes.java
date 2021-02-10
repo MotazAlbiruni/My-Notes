@@ -6,6 +6,10 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +31,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
     private List<NoteEntity> list = new ArrayList<>();
     private final Context context;
     private static String textSize;
+    private int lastPosition = -1;
 
     public AdapterNotes(Context context) {
         this.context = context;
@@ -54,6 +59,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
         holder.txtTitle.setText(list.get(position).getTitle());
         holder.txtBody.setText(list.get(position).getBody());
         holder.txtDate.setText(list.get(position).getDate());
+        setFadeAnimation(holder.itemView);
         int importantType = list.get(position).getType();
         switch (importantType) {
             case 0:
@@ -84,8 +90,19 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
         });
     }//end onBindViewHolder()
 
+    private void setFadeAnimation(View view) {
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+//        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(1000);
+        view.startAnimation(anim);
+    }//end setFadeAnimation()
+
     @Override
     public int getItemCount() {
+        if (list.size() == 0) {
+            return 0;
+        }
         return list.size();
     }//end getItemCount()
 
@@ -98,7 +115,7 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
             txtDate = itemView.findViewById(R.id.txtDateList);
             txtBody = itemView.findViewById(R.id.txtBodyList);
 
-            switch (textSize){
+            switch (textSize) {
                 case "small":
                     txtTitle.setTextSize(18);
                     txtBody.setTextSize(18);
