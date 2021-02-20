@@ -8,9 +8,15 @@
     <string name="setting">Setting</string>
     <string name="about">About us</string>
     <string name="title">Note</string>
-    <string name="hint_title">Your Title</string>
+    <string name="hint_title">Insert Title</string>
     <string name="hint_body">Write your Note here</string>
-    <string name="to_do">short cut</string>
+    <string name="to_do" translatable="false">short cut</string>
+    <string name="my_note">My Notes</string>
+    <string name="body_note">With My Notes,  taking notes is easier than ever</string>
+
+    <string name="text_language_setting">Language</string>
+    <string name="text_display_setting">Display Notes</string>
+    <string name="text_size_setting">Text Size</string>
 
     <string-array name="typeNotes">
         <item>Normal</item>
@@ -20,9 +26,9 @@
 
     <string-array name="language">
         <item>Default</item>
-        <item>arabic</item>
-        <item>english</item>
-        <item>german</item>
+        <item>عربي</item>
+        <item>English</item>
+        <item>Deutsche</item>
     </string-array>
 
     <string-array name="displayNotes">

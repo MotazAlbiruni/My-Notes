@@ -7,12 +7,16 @@
     <color name="colorIcon">#f58634</color>
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorTextBlack">#000000</color>
+    <color name="colorTextDarkBlue">#002145</color>
 
     <color name="Splash_background">#E3A033</color>
     <color name="gray_background">#9FE7E6E6</color>
 
-    <color name="orange">#ffd54f</color>
-    <color name="green">#aed581</color>
-    <color name="blue">#80cbc4</color>
+    <color name="lightCoral">#f08080</color>
+    <color name="lightSeaGreen">#20b2aa</color>
+    <color name="lightBedRoom">#c29ed6</color>
+    <color name="lightYellow">#ffc62b</color>
+    <color name="lightSteelBlue">#63b8ff</color>
+    <color name="lightRed">#c51837</color>
 
 </resources>

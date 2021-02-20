@@ -48,6 +48,7 @@ dependencies {
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
     //Recycler view
+    implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.android.support:recyclerview-v7:30.0.0'
     implementation 'com.android.support:design:30.0.0'
 

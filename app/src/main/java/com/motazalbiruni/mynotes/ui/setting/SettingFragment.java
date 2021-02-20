@@ -20,8 +20,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.motazalbiruni.mynotes.MyValues;
 import com.motazalbiruni.mynotes.R;
 
 import java.util.List;
@@ -31,7 +31,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SettingFragment extends Fragment {
 
-    private SettingViewModel mViewModel;
     private Spinner languageSpinner, displaySpinner, textSizeSpinner;
     private Context context;
 
@@ -49,64 +48,15 @@ public class SettingFragment extends Fragment {
         displaySpinner = view.findViewById(R.id.spinner_displayNotes);
         textSizeSpinner = view.findViewById(R.id.spinner_textSize);
         return view;
-    }
+    }//end onCreateView()
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
+        SettingViewModel mViewModel = new ViewModelProvider(this).get(SettingViewModel.class);
         mViewModel.setContextSetting(context);
-        final SharedPreferences pref = getActivity().getSharedPreferences("motazalbiruni.mynotes", MODE_PRIVATE);
+        final SharedPreferences pref = getActivity().getSharedPreferences(MyValues.SHARED_FILE_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
-
-        //setting language in app
-        mViewModel.getLanguageLiveData().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
-            @Override
-            public void onChanged(List<String> strings) {
-                ArrayAdapter<String> languageAdaptor = new ArrayAdapter<>(context, R.layout.spinner_item_setting
-                        , R.id.txt_spinner_item, strings);
-                languageSpinner.setAdapter(languageAdaptor);
-                switch (pref.getString("language", "ok")) {
-                    case "arabic":
-                        languageSpinner.setSelection(1);
-                        break;
-                    case "english":
-                        languageSpinner.setSelection(2);
-                        break;
-                    case "german":
-                        languageSpinner.setSelection(3);
-                        break;
-                }
-            }
-        });
-
-        languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 1:
-                        editor.putString("language", "arabic");
-                        editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Language is Arabic", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 2:
-                        editor.putString("language", "english");
-                        editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Language is English", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 3:
-                        editor.putString("language", "german");
-                        editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Language is german", Toast.LENGTH_SHORT).show();
-                        break;
-                }//end switch
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         //setting display notes in main ui
         mViewModel.getDisplayNotesLiveData().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
@@ -115,11 +65,11 @@ public class SettingFragment extends Fragment {
                 ArrayAdapter<String> displayAdaptor = new ArrayAdapter<>(context, R.layout.spinner_item_setting
                         , R.id.txt_spinner_item, strings);
                 displaySpinner.setAdapter(displayAdaptor);
-                switch (pref.getString("display", "ok")) {
-                    case "grid":
+                switch (pref.getString(MyValues.DISPLAY_RECYCLER, MyValues.DISPLAY_GRID)) {
+                    case MyValues.DISPLAY_GRID:
                         displaySpinner.setSelection(0);
                         break;
-                    case "list":
+                    case MyValues.DISPLAY_LIST:
                         displaySpinner.setSelection(1);
                         break;
                 }
@@ -132,14 +82,12 @@ public class SettingFragment extends Fragment {
 
                 switch (position) {
                     case 0:
-                        editor.putString("display", "grid");
+                        editor.putString(MyValues.DISPLAY_RECYCLER, MyValues.DISPLAY_GRID);
                         editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is Grid", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        editor.putString("display", "list");
+                        editor.putString(MyValues.DISPLAY_RECYCLER, MyValues.DISPLAY_LIST);
                         editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Display notes is List", Toast.LENGTH_SHORT).show();
                         break;
                 }//end switch
             }
@@ -157,14 +105,14 @@ public class SettingFragment extends Fragment {
                 ArrayAdapter<String> textAdaptor = new ArrayAdapter<>(context, R.layout.spinner_item_setting
                         , R.id.txt_spinner_item, strings);
                 textSizeSpinner.setAdapter(textAdaptor);
-                switch (pref.getString("textSize", "ok")) {
-                    case "small":
+                switch (pref.getString(MyValues.TEXT_SIZE, MyValues.SMALL_TEXT)) {
+                    case MyValues.SMALL_TEXT:
                         textSizeSpinner.setSelection(0);
                         break;
-                    case "medium":
+                    case MyValues.MEDIUM_TEXT:
                         textSizeSpinner.setSelection(1);
                         break;
-                    case "large":
+                    case MyValues.LARGE_TEXT:
                         textSizeSpinner.setSelection(2);
                         break;
                 }
@@ -176,19 +124,16 @@ public class SettingFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        editor.putString("textSize", "small");
+                        editor.putString(MyValues.TEXT_SIZE,  MyValues.SMALL_TEXT);
                         editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Small", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        editor.putString("textSize", "medium");
+                        editor.putString(MyValues.TEXT_SIZE, MyValues.MEDIUM_TEXT);
                         editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Medium", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        editor.putString("textSize", "large");
+                        editor.putString(MyValues.TEXT_SIZE, MyValues.LARGE_TEXT);
                         editor.apply();
-//                        Toast.makeText(getActivity().getApplicationContext(), "Text Size is Large", Toast.LENGTH_SHORT).show();
                         break;
                 }//end switch
             }
@@ -199,15 +144,5 @@ public class SettingFragment extends Fragment {
             }
         });
     }//end onViewCreated()
-
-    //for change language
-    public void changeLanguage(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        Configuration conf = res.getConfiguration();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-    }//end changeLanguage()
 
 }//end class

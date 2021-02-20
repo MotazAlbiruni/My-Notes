@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meine Notizen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="save">Speichern</string>
+    <string name="delete">löschen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="setting">Rahmen</string>
+    <string name="about">Wer sind wir</string>
+    <string name="title">Hinweis</string>
+    <string name="hint_title">Titel einfügen</string>
+    <string name="hint_body">Schreiben Sie hier Ihre Notiz</string>
+    <string name="my_note">Meine Notizen</string>
+    <string name="body_note">Mit Meine Notizen ist das Notieren einfacher als je zuvor</string>
+    <string name="text_language_setting">Sprache</string>
+    <string name="text_display_setting">Notizen Anzeigen</string>
+    <string name="text_size_setting">Textgröße</string>
+
+</resources>

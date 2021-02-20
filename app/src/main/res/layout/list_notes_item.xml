@@ -1,50 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_row"
+    android:id="@+id/layout_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:elevation="4dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_row"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:cardCornerRadius="16dp"
+        >
 
-        <TextView
-            android:id="@+id/txtTitleList"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:gravity="center"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtBodyList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtTitleList"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/txtTitleList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:textColor="@color/colorTextDarkBlue"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/txtDateList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtBodyList"
-            android:layout_marginTop="2dp"
-            android:paddingStart="16dp"
-            android:text="25-mar-2021"
-            android:textColor="@color/colorTextWhite"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/txtBodyList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtTitleList"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:paddingStart="4dp"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="12sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/txtDateList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtBodyList"
+                android:layout_margin="4dp"
+                android:paddingStart="16dp"
+                android:text="25-mar-2021"
+                android:textColor="@color/colorTextDarkBlue"
+                android:textSize="12sp" />
 
-
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/iv_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtBodyList"
+                android:layout_alignEnd="@id/txtBodyList"
+                android:src="@drawable/ic_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
     android:background="@color/colorPrimaryLight"
     tools:context=".ui.main.MainActivity">
 
@@ -11,9 +13,8 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="10dp"
-        tools:listitem="@layout/list_notes_item"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall"/>
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        tools:listitem="@layout/list_notes_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -23,18 +24,30 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:clickable="true"
+        android:contentDescription="@string/to_do"
         android:focusable="true"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="@string/to_do" />
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="No Data Found"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView_mainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-9560026096293120/4649082441">
+
     </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

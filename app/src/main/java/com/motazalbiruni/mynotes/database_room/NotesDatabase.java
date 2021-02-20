@@ -8,20 +8,24 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.motazalbiruni.mynotes.MyValues;
+import com.motazalbiruni.mynotes.R;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = NoteEntity.class,version = 1,exportSchema = false)
 public abstract class NotesDatabase extends RoomDatabase {
 
+    private static Context mcontext;
     private static NotesDatabase inStance;
-    private static final String DATABASE_NAME = "notes_database";
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(4);
 
     public static synchronized NotesDatabase getDatabase(Context context) {
+        mcontext = context;
         if (inStance == null) {
             inStance = Room.databaseBuilder(context.getApplicationContext(),
-                    NotesDatabase.class, DATABASE_NAME).allowMainThreadQueries()
+                    NotesDatabase.class, MyValues.DATABASE_NAME).allowMainThreadQueries()
                     .addCallback(mCallback).build();
         }
         return inStance;
@@ -36,8 +40,9 @@ public abstract class NotesDatabase extends RoomDatabase {
             EXECUTOR_SERVICE.execute(new Runnable() {
                 @Override
                 public void run() {
-                    NoteEntity noteEntity = new NoteEntity("my note","note is the best mizo",
-                            1,"25/3/2021");
+                    NoteEntity noteEntity = new NoteEntity(mcontext.getResources().getString(R.string.hint_title),
+                            mcontext.getResources().getString(R.string.hint_body),
+                            1,"25-march");
                     inStance.getNoteDAO().insert(noteEntity);
                 }
             });
@@ -48,4 +53,5 @@ public abstract class NotesDatabase extends RoomDatabase {
             super.onOpen(db);
         }
     };
+
 }//end NotesDatabase class

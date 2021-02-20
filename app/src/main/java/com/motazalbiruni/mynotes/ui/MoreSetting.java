@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.motazalbiruni.mynotes.MyValues;
 import com.motazalbiruni.mynotes.R;
 import com.motazalbiruni.mynotes.ui.about.AboutFragment;
 import com.motazalbiruni.mynotes.ui.setting.SettingFragment;
@@ -22,19 +23,19 @@ public class MoreSetting extends AppCompatActivity {
 
         Bundle extrasBundle = getIntent().getExtras(); //to get id for note click
         if (extrasBundle != null) {
-            keyMore = extrasBundle.getInt("id_key");
-        }
+            keyMore = extrasBundle.getInt(MyValues.ID_KEY);
+        }//end if(extrasBundle)
 
         if (savedInstanceState == null) {
             switch (keyMore){
-                case 0:
+                case MyValues.SETTING:
                     Objects.requireNonNull(getSupportActionBar()).setTitle( R.string.setting);
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.container, SettingFragment.newInstance())
                             .commitNow();
                     break;
-                case 1:
+                case MyValues.ABOUT:
                     Objects.requireNonNull(getSupportActionBar()).setTitle( R.string.about);
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     getSupportFragmentManager().beginTransaction()

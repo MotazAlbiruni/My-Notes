@@ -3,15 +3,16 @@ package com.motazalbiruni.mynotes.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.motazalbiruni.mynotes.MyValues;
 import com.motazalbiruni.mynotes.R;
 import com.motazalbiruni.mynotes.ui.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_TIME = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,6 @@ public class SplashScreen extends AppCompatActivity {
                 SplashScreen.this.finish();
                 SplashScreen.this.startActivity(intent);
             }
-        },SPLASH_DISPLAY_TIME);
-    }
+        }, MyValues.SPLASH_DISPLAY_TIME);
+    }//end onCreate()
 }//end Class SplashScreen

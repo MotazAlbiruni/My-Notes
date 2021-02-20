@@ -1,79 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
     tools:context=".ui.ReadActivity">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_titleRead"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:elevation="1dp"
+        app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:id="@+id/layout_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight"
+            android:gravity="center"
+            android:padding="8dp"
+            android:visibility="gone">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightCoral"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightSeaGreen"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightBedRoom"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightYellow"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightSteelBlue"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/color_item_6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/lightRed"
+                android:onClick="colorStyle"
+                app:cardCornerRadius="15dp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtTitle_Read"
+            style="@style/textColor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightYellow"
+            android:hint="@string/hint_title"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:padding="16dp"
+            android:singleLine="true"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_bodyRead"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryLight"
-        android:orientation="vertical"
-        android:weightSum="4">
+        android:layout_below="@id/card_titleRead"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="56dp"
+        android:elevation="1dp"
+        app:cardCornerRadius="16dp">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <EditText
+            android:id="@+id/txtNote_Read"
+            style="@style/textColor"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:layout_height="match_parent"
+            android:background="@color/lightYellow"
+            android:gravity="start|top"
+            android:hint="@string/hint_body"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:padding="16dp"
+            android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/txtTitle_Read"
-                style="@style/textColor"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="2.5"
-                android:background="@drawable/edit_text_border_blue"
-                android:enabled="false"
-                android:gravity="center_vertical"
-                android:hint="@string/hint_title"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:padding="16dp"
-                android:singleLine="true"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:ignore="Autofill,NestedWeights" />
-
-            <Spinner
-                android:id="@+id/spinner_important"
-                style="@style/spinnerStyle"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:background="@color/colorPrimaryLight" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout_body"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3.5"
-            android:orientation="vertical">
-
-
-            <EditText
-                android:id="@+id/txtNote_Read"
-                style="@style/textColor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:background="@drawable/edit_text_border_blue"
-                android:enabled="false"
-                android:gravity="start|top"
-                android:hint="@string/hint_body"
-                android:imeOptions="actionDone"
-                android:inputType="textMultiLine"
-                android:padding="16dp"
-                android:textSize="24sp"
-                tools:ignore="Autofill" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView_mainActivity"

@@ -4,21 +4,25 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.motazalbiruni.mynotes.database_room.NoteEntity;
 import com.motazalbiruni.mynotes.database_room.NotesRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private NotesRepository mNotesRepository;
-    private LiveData<List<NoteEntity>> mLiveData;
+    private final NotesRepository mNotesRepository;//for repository object
+    private final LiveData<List<NoteEntity>> mLiveData; //for live list data to adaptor
+    private final MutableLiveData<String> mSelectedLiveData; //for set value of number items selected
 
     public MainViewModel(@NonNull Application application) {
         super(application);
         mNotesRepository = NotesRepository.getRepository(application);
         mLiveData =  mNotesRepository.getAllNotes();
+        mSelectedLiveData = new MutableLiveData<>();
     }
 
     //getAllNotes
@@ -45,4 +49,14 @@ public class MainViewModel extends AndroidViewModel {
     public void deleteById(int id){
         mNotesRepository.deleteById(id);
     }
+
+    //get size of selected
+    public MutableLiveData<String> getSelectedLiveData() {
+        return mSelectedLiveData;
+    }
+    //set size of selected
+    public void setSelectedLiveData(String selectedLiveData) {
+        this.mSelectedLiveData.setValue(selectedLiveData);
+    }
+
 }//end MainViewModel Class
