@@ -130,7 +130,15 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllNotes().observe(this, new Observer<List<NoteEntity>>() {
             @Override
             public void onChanged(List<NoteEntity> noteEntities) {
-                adapterNotes.setList(noteEntities);
+                if (noteEntities.isEmpty()){
+                    tv_empty.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                }else {
+                    tv_empty.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    adapterNotes.setList(noteEntities);
+                }
+
             }
         });
         recyclerView.setAdapter(adapterNotes);

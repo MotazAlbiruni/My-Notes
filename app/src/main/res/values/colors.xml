@@ -3,20 +3,20 @@
     <color name="colorPrimary">#00af91</color>
     <color name="colorPrimaryLight">#dcedc7</color>
     <color name="colorPrimaryDark">#007965</color>
-    <color name="colorAccent">#ffcc29</color>
-    <color name="colorIcon">#f58634</color>
+    <color name="colorAccent">#f58634</color>
+    <color name="colorIcon">#DB6D1B</color>
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorTextBlack">#000000</color>
     <color name="colorTextDarkBlue">#002145</color>
 
     <color name="Splash_background">#E3A033</color>
-    <color name="gray_background">#9FE7E6E6</color>
+    <color name="gray_background">#f4f3f2</color>
 
-    <color name="lightCoral">#f08080</color>
-    <color name="lightSeaGreen">#20b2aa</color>
-    <color name="lightBedRoom">#c29ed6</color>
-    <color name="lightYellow">#ffc62b</color>
-    <color name="lightSteelBlue">#63b8ff</color>
-    <color name="lightRed">#c51837</color>
+    <color name="lightColor_1">#f08080</color>
+    <color name="lightColor_2">#20b2aa</color>
+    <color name="lightColor_3">#c29ed6</color>
+    <color name="lightColor_4">#d6ada6</color>
+    <color name="lightColor_5">#91d7f1</color>
+    <color name="lightColor_6">#968f7d</color>
 
 </resources>

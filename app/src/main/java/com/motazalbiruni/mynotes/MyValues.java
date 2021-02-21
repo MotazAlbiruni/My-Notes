@@ -16,7 +16,7 @@ public class MyValues {
     public final static int SETTING = 0;
     public final static int ABOUT = 1;
 
-    public final static int SPLASH_DISPLAY_TIME = 1000;//for splash time delay
+    public final static int SPLASH_DISPLAY_TIME = 0;//for splash time delay by ms
 
     public final static String DISPLAY_RECYCLER = "ID_DISPLAY";//for display recycler view
     public final static String DISPLAY_GRID = "GRID";//for display grid

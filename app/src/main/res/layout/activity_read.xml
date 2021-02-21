@@ -29,7 +29,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightCoral"
+                android:backgroundTint="@color/lightColor_1"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
 
@@ -38,7 +38,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightSeaGreen"
+                android:backgroundTint="@color/lightColor_2"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightBedRoom"
+                android:backgroundTint="@color/lightColor_3"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
 
@@ -56,7 +56,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightYellow"
+                android:backgroundTint="@color/lightColor_4"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightSteelBlue"
+                android:backgroundTint="@color/lightColor_5"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/lightRed"
+                android:backgroundTint="@color/lightColor_6"
                 android:onClick="colorStyle"
                 app:cardCornerRadius="15dp" />
         </LinearLayout>
@@ -84,7 +84,7 @@
             style="@style/textColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/lightYellow"
+            android:background="@color/lightColor_1"
             android:hint="@string/hint_title"
             android:imeOptions="actionNext"
             android:inputType="text"
@@ -110,7 +110,7 @@
             style="@style/textColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/lightYellow"
+            android:background="@color/lightColor_1"
             android:gravity="start|top"
             android:hint="@string/hint_body"
             android:imeOptions="actionDone"

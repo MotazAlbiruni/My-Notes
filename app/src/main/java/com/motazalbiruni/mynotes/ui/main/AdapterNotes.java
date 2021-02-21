@@ -255,27 +255,27 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
         switch (type) {
             case 0:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightCoral));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_1));
                 break;
             case 1:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightSeaGreen));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_2));
                 break;
             case 2:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightBedRoom));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_3));
                 break;
             case 3:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightYellow));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_4));
                 break;
             case 4:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightSteelBlue));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_5));
                 break;
             case 5:
                 //change card view background color
-                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightRed));
+                holder.card.setCardBackgroundColor(context.getResources().getColor(R.color.lightColor_6));
                 break;
 
         }//end switch

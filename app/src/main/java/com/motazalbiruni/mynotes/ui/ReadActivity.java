@@ -2,22 +2,22 @@ package com.motazalbiruni.mynotes.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -37,17 +37,17 @@ public class ReadActivity extends AppCompatActivity {
     private MainViewModel viewModel;
     private EditText txt_title, txt_body;
     private Spinner spinner;
-    LinearLayout layout_style;
+    private LinearLayout layout_style;
 
     private static boolean checkStyle;
     private static Integer id_note;
-    private static int type=0;
+    private static int type = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        Objects.requireNonNull(getSupportActionBar()).setTitle( R.string.title);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_read);
         //ADMob
@@ -67,8 +67,8 @@ public class ReadActivity extends AppCompatActivity {
         txt_title = findViewById(R.id.txtTitle_Read); //text for title note
         txt_body = findViewById(R.id.txtNote_Read); //text for body note
         //setting text size in reading
-        String textSize = pref.getString(MyValues.TEXT_SIZE, MyValues.MEDIUM_TEXT );
-        switch (textSize){
+        String textSize = pref.getString(MyValues.TEXT_SIZE, MyValues.MEDIUM_TEXT);
+        switch (textSize) {
             case MyValues.SMALL_TEXT:
                 txt_title.setTextSize(16);
                 txt_body.setTextSize(16);
@@ -88,9 +88,11 @@ public class ReadActivity extends AppCompatActivity {
             id_note = extrasBundle.getInt(MyValues.ID_KEY);
         }//end if(extrasBundle)
 
-        viewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory
+        viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
                 .getInstance(this.getApplication())).get(MainViewModel.class);
-
+        //reset value of style
+        checkStyle = false;
+        //check condition
         if (id_note != MyValues.ADD) {
             //if id >= 0 get note form database
             viewModel.getNoteById(id_note).observe(this, new Observer<NoteEntity>() {
@@ -108,9 +110,27 @@ public class ReadActivity extends AppCompatActivity {
             });
         } else {
             //id =-1 create new note
+            type = 0;
             txt_title.setText("");
             txt_body.setText("");
         }//end if else
+
+        txt_body.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                hideColorStyle();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                hideColorStyle();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }//end onCreate()
 
@@ -120,16 +140,17 @@ public class ReadActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }//end onCreateOptionsMenu()
+
     //handle item select
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.edit_item:
-                if (!checkStyle){
-                   appearColorStyle();
-                }else{
+            case R.id.style_item:
+                if (!checkStyle) {
+                    appearColorStyle();
+                } else {
                     hideColorStyle();
                 }//end if else
                 return true;
@@ -144,36 +165,38 @@ public class ReadActivity extends AppCompatActivity {
         }
     }//end onOptionsItemSelected()
 
-
-    private void saveData(){
+    private void saveData() {
         Date date = new Date();
-        final String timeNow = (String) DateFormat.format("d-MMMM-yyyy",date.getTime());
+        final String timeNow = (String) DateFormat.format("d-MMMM-yyyy", date.getTime());
         final String txt_title_editing = txt_title.getText().toString();
         final String txt_body_editing = txt_body.getText().toString();
         if (id_note != MyValues.ADD) {
             viewModel.getNoteById(id_note).observe(this, new Observer<NoteEntity>() {
                 @Override
                 public void onChanged(NoteEntity noteEntity) {
-                    if (!noteEntity.getBody().equals(txt_body_editing)
-                    || !noteEntity.getTitle().equals(txt_title_editing)
-                    || type !=noteEntity.getType() ){
-                        viewModel.update(new NoteEntity(id_note, txt_title_editing, txt_body_editing, type,timeNow));
+                    try {
+                        if (!noteEntity.getBody().equals(txt_body_editing)
+                                || !noteEntity.getTitle().equals(txt_title_editing)
+                                || type != noteEntity.getType()) {
+                            viewModel.update(new NoteEntity(id_note, txt_title_editing, txt_body_editing, type, timeNow));
+                        }
+                    } catch (Exception e) {
+                        Log.d("onChange", e.getMessage());
                     }
-                }
+                }//end onChanged()
             });
         } else {
             if (!txt_title_editing.equals(""))
-            viewModel.insert(new NoteEntity(txt_title_editing, txt_body_editing, type,timeNow));
+                viewModel.insert(new NoteEntity(txt_title_editing, txt_body_editing, type, timeNow));
         }
         finish();
-    }
+    }//end saveData()
 
-    private void deleteFromData(){
+    private void deleteFromData() {
         if (id_note != MyValues.ADD) {
             viewModel.deleteById(id_note);
             finish();
         }
-//        Toast.makeText(this,  getResources().getString(R.string.delete), Toast.LENGTH_SHORT).show();
     }//end deleteFromData()
 
     @Override
@@ -182,31 +205,31 @@ public class ReadActivity extends AppCompatActivity {
         saveData();
     }//end onPause()
 
-    private void changeBackground(int type){
-        switch (type){
+    private void changeBackground(int type) {
+        switch (type) {
             case 0:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightCoral));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightCoral));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_1));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_1));
                 break;
             case 1:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightSeaGreen));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightSeaGreen));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_2));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_2));
                 break;
             case 2:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightBedRoom));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightBedRoom));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_3));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_3));
                 break;
             case 3:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightYellow));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightYellow));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_4));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_4));
                 break;
             case 4:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightSteelBlue));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightSteelBlue));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_5));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_5));
                 break;
             case 5:
-                txt_body.setBackground(getResources().getDrawable(R.color.lightRed));
-                txt_title.setBackground(getResources().getDrawable(R.color.lightRed));
+                txt_body.setBackground(getResources().getDrawable(R.color.lightColor_6));
+                txt_title.setBackground(getResources().getDrawable(R.color.lightColor_6));
                 break;
         }//end switch
     }//end changeBackground
@@ -214,46 +237,47 @@ public class ReadActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     public void colorStyle(View view) {
         int id = view.getId();
-        switch (id){
+        switch (id) {
             case R.id.color_item_1:
-                type=0;
+                type = 0;
                 hideColorStyle();
                 changeBackground(0);
                 break;
             case R.id.color_item_2:
-                type=1;
+                type = 1;
                 hideColorStyle();
                 changeBackground(1);
                 break;
             case R.id.color_item_3:
-                type=2;
+                type = 2;
                 hideColorStyle();
                 changeBackground(2);
                 break;
             case R.id.color_item_4:
-                type=3;
+                type = 3;
                 hideColorStyle();
                 changeBackground(3);
                 break;
             case R.id.color_item_5:
-                type=4;
+                type = 4;
                 hideColorStyle();
                 changeBackground(4);
                 break;
             case R.id.color_item_6:
-                type=5;
+                type = 5;
                 hideColorStyle();
                 changeBackground(5);
                 break;
         }//end switch(id)
     }//end colorStyle(view)
 
-    private void hideColorStyle(){
+    private void hideColorStyle() {
         layout_style.setVisibility(View.GONE);
         txt_title.setVisibility(View.VISIBLE);
         checkStyle = false;
     }//end hideColorStyle()
-    private void appearColorStyle(){
+
+    private void appearColorStyle() {
         layout_style.setVisibility(View.VISIBLE);
         txt_title.setVisibility(View.INVISIBLE);
         checkStyle = true;

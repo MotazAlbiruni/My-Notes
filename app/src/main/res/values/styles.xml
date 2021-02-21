@@ -11,6 +11,7 @@
 
     <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@drawable/my_notes_splash</item>
+        <item name="android:state_active">false</item>
     </style>
 
     <style name="spinnerStyle"  parent="@android:style/Widget.TextView.SpinnerItem">

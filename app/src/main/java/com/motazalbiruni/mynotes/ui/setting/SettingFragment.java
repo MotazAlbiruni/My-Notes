@@ -31,7 +31,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SettingFragment extends Fragment {
 
-    private Spinner languageSpinner, displaySpinner, textSizeSpinner;
+    private Spinner displaySpinner, textSizeSpinner;
     private Context context;
 
     public static SettingFragment newInstance() {
@@ -44,7 +44,6 @@ public class SettingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         context = getContext();
         View view = inflater.inflate(R.layout.setting_fragment, container, false);
-        languageSpinner = view.findViewById(R.id.spinner_language);
         displaySpinner = view.findViewById(R.id.spinner_displayNotes);
         textSizeSpinner = view.findViewById(R.id.spinner_textSize);
         return view;

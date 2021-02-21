@@ -5,93 +5,51 @@
     android:id="@+id/setting"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimaryLight"
+    android:orientation="vertical"
     tools:context=".ui.setting.SettingFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/txt_language"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:gravity="left|center"
-            android:text="@string/text_language_setting"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/spinner_language"
-            style="@style/spinnerStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="?android:attr/listDivider" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_margin="16dp">
 
         <TextView
             android:id="@+id/txt_displayNotes"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:gravity="left|center"
+            android:layout_centerVertical="true"
             android:text="@string/text_display_setting"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spinner_displayNotes"
-            style="@style/spinnerStyle"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left|center"/>
-    </LinearLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/setting_spinner_background" />
+    </RelativeLayout>
 
     <View
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="?android:attr/listDivider" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_margin="16dp">
 
         <TextView
             android:id="@+id/txt_textSize"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
             android:gravity="left|center"
             android:text="@string/text_size_setting"
             android:textColor="@color/colorPrimary"
@@ -99,19 +57,21 @@
 
         <Spinner
             android:id="@+id/spinner_textSize"
-            style="@style/spinnerStyle"
-            android:layout_width="0dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="left|center"/>
-    </LinearLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/setting_spinner_background" />
+
+    </RelativeLayout>
 
     <View
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="?android:attr/listDivider" />
 
 
