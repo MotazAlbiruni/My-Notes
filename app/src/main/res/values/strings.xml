@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">My Notes</string>
+    <string name="version">Version</string>
+    <string name="content">Content Us :</string>
 
     <string name="edit">Edit</string>
     <string name="save">Save</string>

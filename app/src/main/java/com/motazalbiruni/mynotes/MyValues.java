@@ -31,5 +31,15 @@ public class MyValues {
     public final static String ARABIC = "ar";//for arabic
     public final static String ENGLISH = "en";//for english
     public final static String GERMAN = "de";//for german
+    //for facebook_browser page my notes
+    public final static String facebook = "https://www.facebook.com/My-Notes-102579908523795";
+    //for facebook_App page my notes
+    public final static String facebook_App = "fb://My Notes/102579908523795";
+
+    //for youTube_browser page my notes
+    public final static String youTube = "http://www.youtube.com/";
+    //for youTube_App page my notes
+    public final static String youTube_App = "vnd.youtube:";
+
 
 }//end class

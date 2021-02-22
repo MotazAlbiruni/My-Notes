@@ -12,11 +12,11 @@
     <color name="Splash_background">#E3A033</color>
     <color name="gray_background">#f4f3f2</color>
 
-    <color name="lightColor_1">#f08080</color>
-    <color name="lightColor_2">#20b2aa</color>
-    <color name="lightColor_3">#c29ed6</color>
-    <color name="lightColor_4">#d6ada6</color>
-    <color name="lightColor_5">#91d7f1</color>
-    <color name="lightColor_6">#968f7d</color>
+    <color name="lightColor_1">#E7C196</color>
+    <color name="lightColor_2">#EE9DA5</color>
+    <color name="lightColor_3">#C2A4DE</color>
+    <color name="lightColor_4">#E0E097</color>
+    <color name="lightColor_5">#8DD69D</color>
+    <color name="lightColor_6">#8FBBDD</color>
 
 </resources>
