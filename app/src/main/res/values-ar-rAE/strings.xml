@@ -30,7 +30,6 @@
         <item>كبير</item>
     </string-array>
 
-    <string name="text_language_setting">اللغة</string>
     <string name="text_display_setting">طريقة العرض</string>
     <string name="text_size_setting">حجم الخط</string>
     <string name="version">الإصدار</string>

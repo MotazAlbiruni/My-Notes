@@ -40,8 +40,8 @@ public abstract class NotesDatabase extends RoomDatabase {
             EXECUTOR_SERVICE.execute(new Runnable() {
                 @Override
                 public void run() {
-                    NoteEntity noteEntity = new NoteEntity(mcontext.getResources().getString(R.string.hint_title),
-                            mcontext.getResources().getString(R.string.hint_body),
+                    NoteEntity noteEntity = new NoteEntity(mcontext.getResources().getString(R.string.my_note),
+                            mcontext.getResources().getString(R.string.body_note),
                             1,"25-march");
                     inStance.getNoteDAO().insert(noteEntity);
                 }

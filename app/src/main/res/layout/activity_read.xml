@@ -112,7 +112,7 @@
             android:layout_height="match_parent"
             android:background="@color/lightColor_1"
             android:gravity="start|top"
-            android:hint="@string/hint_body"
+            android:hint="@string/body_note"
             android:imeOptions="actionDone"
             android:inputType="textMultiLine"
             android:padding="16dp"
