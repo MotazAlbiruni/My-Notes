@@ -3,6 +3,8 @@
     <string name="version">Version</string>
     <string name="content">Content Us :</string>
 
+    <string name="selected">Selected</string>
+    <string name="item">Item</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
@@ -17,7 +19,7 @@
     <string name="body_note">With My Notes,  taking notes is easier than ever</string>
 
     <string name="text_display_setting">Display Notes</string>
-    <string name="text_size_setting">Text Size</string>
+    <string name="text_size_setting">Font Size</string>
 
     <string-array name="typeNotes">
         <item>Normal</item>

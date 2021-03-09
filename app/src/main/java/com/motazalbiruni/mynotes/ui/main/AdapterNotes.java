@@ -115,7 +115,9 @@ public class AdapterNotes extends RecyclerView.Adapter<AdapterNotes.MyHolder> {
                                 public void onChanged(String s) {
                                     //when text change
                                     //set text on action mode title
-                                    mode.setTitle(String.format("%s Selected",s));
+                                    mode.setTitle(String.format("%s %s %s",context.getResources()
+                                            .getString(R.string.selected),s ,
+                                            context.getResources().getString(R.string.item) ));
                                 }
                             });
                             return true;

@@ -15,5 +15,7 @@
     <string name="my_note">Mes notes</string>
     <string name="body_note">Avec Mes notes, prendre des notes est plus facile que jamais</string>
     <string name="text_display_setting">Afficher les notes</string>
-    <string name="text_size_setting">Taille du texte</string>
+    <string name="text_size_setting">taille de police</string>
+    <string name="selected">sélectionné</string>
+    <string name="item">Élément</string>
 </resources>

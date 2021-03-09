@@ -34,5 +34,7 @@
     <string name="text_size_setting">حجم الخط</string>
     <string name="version">الإصدار</string>
     <string name="content">إدعمنا :</string>
+    <string name="selected" translatable="false">" تم تحديد"</string>
+    <string name="item">عنصر</string>
 
 </resources>

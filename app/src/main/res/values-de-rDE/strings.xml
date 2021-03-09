@@ -13,8 +13,10 @@
     <string name="my_note">Meine Notizen</string>
     <string name="body_note">Mit Meine Notizen ist das Notieren einfacher als je zuvor</string>
     <string name="text_display_setting">Notizen Anzeigen</string>
-    <string name="text_size_setting">Textgröße</string>
+    <string name="text_size_setting">Schriftgröße</string>
     <string name="version">Ausführung</string>
     <string name="content">Unterstütze uns :</string>
+    <string name="selected">Ausgewählt</string>
+    <string name="item">Artikel</string>
 
 </resources>
