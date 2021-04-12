@@ -39,6 +39,7 @@ public class ReadActivity extends AppCompatActivity {
     private Spinner spinner;
     private LinearLayout layout_style;
 
+    private SharedPreferences pref;
     private static boolean checkStyle;
     private static Integer id_note;
     private static int type = 0;
@@ -61,7 +62,10 @@ public class ReadActivity extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
         //file shared preferences
-        SharedPreferences pref = getSharedPreferences(MyValues.SHARED_FILE_NAME, MODE_PRIVATE);
+        pref = getSharedPreferences(MyValues.SHARED_FILE_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor spEditor = pref.edit();
+        spEditor.putInt("save",-1);
+        spEditor.apply();
 
         layout_style = findViewById(R.id.layout_style);
         txt_title = findViewById(R.id.txtTitle_Read); //text for title note
@@ -156,6 +160,9 @@ public class ReadActivity extends AppCompatActivity {
                 return true;
             case R.id.save_item:
                 saveData();
+                SharedPreferences.Editor spEditor = pref.edit();
+                spEditor.putInt("save",1);
+                spEditor.apply();
                 return true;
             case R.id.delete_item:
                 deleteFromData();
@@ -202,7 +209,10 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        saveData();
+        int save = pref.getInt("save", -1);
+        if (save == -1) {
+            saveData();
+        }
     }//end onPause()
 
     private void changeBackground(int type) {
